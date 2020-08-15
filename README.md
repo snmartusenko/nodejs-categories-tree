@@ -43,3 +43,6 @@ Set your DB credentials to config.json file (in project root folder)
 ```
 npm run start
 ```
+
+#### And finaly
+#### Open application in your browser: http://localhost:5000
