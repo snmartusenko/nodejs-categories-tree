@@ -4,12 +4,6 @@ const fs = require('fs');
 const db = require('../services/database');
 const {QueryTypes} = require('sequelize');
 
-function initCategories() {
-    const sql = fs.readFileSync('./sql/category.sql', 'utf-8').toString();
-    return db.query(sql)
-}
-
-
 exports.getAll = async function (req, res) {
     return res.json({
         code: 'success',

@@ -4,7 +4,7 @@
 let app = (function ($) {
 
     // Инициализируем нужные переменные
-    let ajaxUrl = '/api',
+    let apiUrl = '/api',
         ui = {
             $categories: $('#categories'),
             $goods: $('#goods')
@@ -26,38 +26,6 @@ let app = (function ($) {
             category = data.node.text;
             ui.$goods.html('Товары из категории ' + category);
             console.log('changed node: ', data);
-            console.log('data.node: ', data.text);
-        }).bind('move_node.jstree', function (e, data) {
-            let params = {
-                id: +data.node.id,
-                old_parent: +data.old_parent,
-                new_parent: +data.parent,
-                old_position: +data.old_position,
-                new_position: +data.position
-            };
-            _moveCategory(params);
-            console.log('move_node params', params);
-        });
-    }
-
-    // Перемещение категории
-    function _moveCategory(params) {
-        let data = $.extend(params, {});
-
-        $.ajax({
-            url: ajaxUrl + '/categories/move',
-            data: data,
-            dataType: 'json',
-            success: function (resp) {
-                if (resp.code === 'success') {
-                    console.log('category moved');
-                } else {
-                    console.error('Ошибка получения данных с сервера: ', resp.message);
-                }
-            },
-            error: function (error) {
-                console.error('Ошибка: ', error);
-            }
         });
     }
 
@@ -66,7 +34,7 @@ let app = (function ($) {
         let params = {};
 
         $.ajax({
-            url: ajaxUrl + '/categories',
+            url: apiUrl + '/categories',
             method: 'GET',
             data: params,
             dataType: 'json',
