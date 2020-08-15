@@ -1,0 +1,6 @@
+{
+  "MySQL_host": "127.0.0.1",
+  "MySQL_user": "root",
+  "MySQL_pass": "root",
+  "MySQL_db": "categories-tree"
+}
